@@ -1,3 +1,25 @@
-# Godot 4+ specific ignores
+# Godot
+.import/
+.export/
+*.translation
+*.mono
+.mono/
+
+# Godot cache
 .godot/
-/android/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+
+# Build
+bin/
+export/
+
+# C# (se usi Godot .NET)
+.vscode/
+.idea/
+*.user
+*.suo
+*.csproj
+*.sln
