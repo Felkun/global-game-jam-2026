@@ -52,9 +52,18 @@ texture_region_size = Vector2i(128, 128)
 1:2/0 = 0
 2:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+texture = ExtResource("3_1bvp3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-46.718117, 31.418617, -0.273201, 54.914276, 47.810944, 31.418617, 47.264534, -16.119122, 0.27320862, -39.06837, -47.264526, -16.665531)
+
 [sub_resource type="TileSet" id="TileSet_lquwl"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 sources/2 = SubResource("TileSetAtlasSource_lquwl")
 
@@ -130,6 +139,9 @@ func play_anim(movement):
 		anim.play(\"front_idle\")
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(4543.5, 13.999725)
+
 [node name="main" type="Node2D" unique_id=556733197]
 position = Vector2(-77, 81)
 
@@ -152,3 +164,35 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
 metadata/_edit_group_ = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=692509135]
+disable_mode = 2
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D" unique_id=122411765]
+position = Vector2(2945, 350)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=406361756]
+disable_mode = 2
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D2" unique_id=1309026090]
+position = Vector2(-897, 562)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=1606392228]
+disable_mode = 2
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D3" unique_id=1561220472]
+position = Vector2(1159, 2302)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=734722993]
+disable_mode = 2
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D4" unique_id=364190809]
+position = Vector2(810.5, -1668.9999)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_1bvp3")
