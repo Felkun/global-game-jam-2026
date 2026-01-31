@@ -172,6 +172,9 @@ script = SubResource("GDScript_0xm2m")
 position = Vector2(124, 64)
 tile_set = SubResource("TileSet_lquwl")
 format = 2
+<<<<<<< Updated upstream
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1004627108]
 tile_set = SubResource("TileSet_7mycd")
+=======
+>>>>>>> Stashed changes
