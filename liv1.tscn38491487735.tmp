@@ -71,6 +71,88 @@ sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 sources/2 = SubResource("TileSetAtlasSource_lquwl")
 sources/3 = SubResource("TileSetAtlasSource_7mycd")
 
+[sub_resource type="GDScript" id="GDScript_0xm2m"]
+script/source = "extends CharacterBody2D
+
+@onready var anim = $TutaBase
+
+const SPEED = 450.0
+enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
+var dir = current_direction.NONE
+
+func _physics_process(delta):
+	player_movement(delta)
+
+func player_movement(delta):
+
+	if Input.is_action_pressed(\"move_up\"):
+		dir = current_direction.UP
+		play_anim(1)
+		velocity.x = 0
+		velocity.y = -SPEED
+	elif Input.is_action_pressed(\"move_down\"):
+		dir = current_direction.DOWN
+		play_anim(1)
+		velocity.x = 0
+		velocity.y = SPEED
+	elif Input.is_action_pressed(\"move_left\"):
+		dir = current_direction.LEFT
+		play_anim(1)
+		velocity.x = -SPEED
+		velocity.y = 0
+	elif Input.is_action_pressed(\"move_right\"):
+		dir = current_direction.RIGHT
+		play_anim(1)
+		velocity.x = SPEED
+		velocity.y = 0
+	else:
+		play_anim(0)
+		velocity.x = 0
+		velocity.y = 0
+	
+	move_and_slide()
+	
+func play_anim(movement):
+	
+	
+	if dir == current_direction.RIGHT:
+		anim.flip_h = false
+		if movement == 1:
+			anim.play(\"side_walk\")
+		elif movement == 0:
+			anim.play(\"side_idle\")
+	elif dir == current_direction.LEFT:
+		anim.flip_h = true
+		if movement == 1:
+			anim.play(\"side_walk\")
+		elif movement == 0:
+			anim.play(\"side_idle\")
+	elif dir == current_direction.UP:
+		anim.flip_h = false
+		if movement == 1:
+			anim.play(\"back_walk\")
+		elif movement == 0:
+			anim.play(\"back_idle\")
+			
+	elif dir == current_direction.DOWN:
+		anim.flip_h = false
+		if movement == 1:
+			anim.play(\"front_walk\")
+		elif movement == 0:
+			anim.play(\"front_idle\")
+		
+	else:
+		anim.play(\"front_idle\")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print (\"funge\")
+	$TutaBase.visible = false
+	$TutaMeccanico.visible = true
+	anim = $TutaMeccanico
+	
+"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
 radius = 8.399994
 height = 26.799988
@@ -111,6 +193,7 @@ tile_set = SubResource("TileSet_lquwl")
 [node name="Player" parent="." unique_id=1216278766 instance=ExtResource("5_lhe6b")]
 position = Vector2(1019, 1977)
 motion_mode = 1
+script = SubResource("GDScript_0xm2m")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
@@ -150,4 +233,3 @@ shape = SubResource("CapsuleShape2D_2gl6a")
 
 [connection signal="body_entered" from="AreaPCKey" to="Porte" method="_on_area_pc_key_body_entered"]
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="CravattaMeccanico/Area2D" to="Player" method="_on_area_2d_body_entered"]
