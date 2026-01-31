@@ -269,8 +269,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gyqm"]
-radius = 39.0
-height = 132.0
+radius = 24.992756
+height = 67.98029
 
 [node name="enemy" type="CharacterBody2D" unique_id=68590956]
 script = SubResource("GDScript_7k104")
@@ -282,7 +282,7 @@ animation = &"back_idle"
 [node name="detection_area" type="Area2D" parent="AnimatedSprite2D" unique_id=1926171846]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1970788268]
-position = Vector2(-4.2632564e-14, 1.0000005)
-rotation = -6.2831855
+position = Vector2(1.0000002, 38.000008)
+rotation = 1.5948807
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_4gyqm")

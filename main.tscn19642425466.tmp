@@ -145,9 +145,9 @@ func play_anim(movement):
 
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 20, 513, 0, 0, 0, 0, 1024, 513, 0, 0, 0, 0, 1024, 1040, 0, 0, 0, 0, 1221, 1040, 0, 0, 0, 0, 1221, 1792, 0, 0, 0, 0, 1221, 1040, 0, 0, 0, 0, 1024, 1040, 0, 0, 0, 0, 1024, 513, 0, 0, 0, 0, 20, 513)
+"points": PackedVector2Array(0, 0, 0, 0, 2, 512, 0, 0, 0, 0, 1033, 541, 0, 0, 0, 0, 1036, 1032, 0, 0, 0, 0, 1224, 1050, 0, 0, 0, 0, 1254, 1798, 0, 0, 0, 0, 1187, 1765, 0, 0, 0, 0, 1181, 1074, 0, 0, 0, 0, 983, 1060, 0, 0, 0, 0, 979, 570, 0, 0, 0, 0, -29, 570, 0, 0, 0, 0, 0, 514, 0, 0, 0, 0, 0, 510)
 }
-point_count = 9
+point_count = 12
 
 [node name="main" type="Node2D" unique_id=556733197]
 position = Vector2(-77, 81)
@@ -184,7 +184,7 @@ stream = ExtResource("4_1bvp3")
 curve = SubResource("Curve2D_7mycd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=497892701]
-position = Vector2(79.547516, 513)
+position = Vector2(61.518597, 513.67413)
 rotation = -0.005964144
 progress = 59.55
 rotates = false

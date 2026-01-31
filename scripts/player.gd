@@ -6,7 +6,7 @@ enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
 var dir = current_direction.NONE
 func _physics_process(delta):
 	player_movement(delta)
-	transform.x
+
 func player_movement(delta):
 
 	if Input.is_action_pressed("move_up"):
