@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b12fhqld0phdm"]
 
 [ext_resource type="Script" uid="uid://d27nyj7fs726g" path="res://scripts/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cso5xcf67oqv" path="res://asset/elon-mask/player.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cso5xcf67oqv" path="res://asset/the-musquerade/images/player.png" id="2_onrkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
