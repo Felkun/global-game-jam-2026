@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b12fhqld0phdm" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bki48q86p7y32" path="res://asset/the-musquerade/images/tileset.png" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://camq2tmkbwq1w" path="res://asset/the-musquerade/images/tileset pavimento1.png" id="2_h2yge"]
+[ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("1_h2yge")
@@ -152,3 +153,6 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
 metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1183614109]
+stream = ExtResource("4_1bvp3")
