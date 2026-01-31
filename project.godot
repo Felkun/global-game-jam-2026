@@ -98,6 +98,7 @@ move_right={
 
 sensors/enable_accelerometer=true
 sensors/enable_gyroscope=true
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 
