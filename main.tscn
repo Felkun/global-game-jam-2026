@@ -142,8 +142,8 @@ func play_anim(movement):
 		anim.play(\"front_idle\")
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(4543.5, 13.999725)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(4079, 20.000244)
 
 [node name="main" type="Node2D" unique_id=556733197]
 position = Vector2(-77, 81)
@@ -173,36 +173,34 @@ metadata/_edit_group_ = true
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
 metadata/_edit_group_ = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=692509135]
-disable_mode = 2
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D" unique_id=122411765]
-position = Vector2(2945, 350)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=406361756]
-disable_mode = 2
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D2" unique_id=1309026090]
-position = Vector2(-897, 562)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=1606392228]
-disable_mode = 2
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D3" unique_id=1561220472]
-position = Vector2(1159, 2302)
-rotation = -3.1415925
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=734722993]
-disable_mode = 2
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D4" unique_id=364190809]
-position = Vector2(810.5, -1668.9999)
-rotation = -3.1415925
-shape = SubResource("RectangleShape2D_1bvp3")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1183614109]
 stream = ExtResource("4_1bvp3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=229347385]
+position = Vector2(1159, 2302)
+rotation = -3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1728157336]
+position = Vector2(224.5, 0)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=994701663]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2" unique_id=946858962]
+position = Vector2(-898, 345)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1252479443]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D3" unique_id=741642137]
+position = Vector2(2951, 285)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1031439725]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D4" unique_id=840076580]
+position = Vector2(941, -1664)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_lquwl")
