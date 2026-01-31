@@ -3,7 +3,6 @@ extends Node2D
 var keyparking = 0
 
 
-
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -15,3 +14,4 @@ func _process(delta: float) -> void:
 
 func _on_area_pc_key_body_entered(body: Node2D) -> void:
 	keyparking = 1
+	print(keyparking)
