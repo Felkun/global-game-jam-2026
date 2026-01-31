@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://d27nyj7fs726g" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cso5xcf67oqv" path="res://asset/elon-mask/player.png" id="2_onrkg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(0, 384, 128, 128)
@@ -269,12 +267,18 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 21.090233
+height = 65.88454
+
 [node name="Player" type="CharacterBody2D" unique_id=1216278766]
 script = ExtResource("1_onrkg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386655124]
-shape = SubResource("CircleShape2D_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=425019356]
 sprite_frames = SubResource("SpriteFrames_dx0e4")
 animation = &"back_walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386655124]
+position = Vector2(2, 40)
+rotation = 1.5948807
+shape = SubResource("CapsuleShape2D_onrkg")
