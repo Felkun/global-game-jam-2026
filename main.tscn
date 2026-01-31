@@ -164,7 +164,7 @@ sources/0 = SubResource("TileSetAtlasSource_lquwl")
 position = Vector2(-77, 81)
 
 [node name="Player" parent="." unique_id=1216278766 instance=ExtResource("1_0xm2m")]
-position = Vector2(136, -25)
+position = Vector2(125, 4)
 motion_mode = 1
 script = SubResource("GDScript_0xm2m")
 
