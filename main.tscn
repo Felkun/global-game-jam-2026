@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b12fhqld0phdm" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bki48q86p7y32" path="res://asset/the-musquerade/images/tileset.png" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://cy7ruxiuugtsa" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://camq2tmkbwq1w" path="res://asset/the-musquerade/images/tileset pavimento1.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="3_1bvp3"]
 
@@ -139,8 +140,11 @@ func play_anim(movement):
 		anim.play(\"front_idle\")
 "
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+
 [node name="main" type="Node2D" unique_id=556733197]
 position = Vector2(-77, 81)
+script = ExtResource("1_lquwl")
 
 [node name="Pavimento" type="TileMapLayer" parent="." unique_id=1931102264]
 texture_filter = 1
@@ -166,3 +170,13 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
 metadata/_edit_group_ = true
+
+[node name="AreaPCKey" type="Area2D" parent="." unique_id=355690790]
+position = Vector2(1663, 1581)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPCKey" unique_id=1833025514]
+position = Vector2(7.2, 14.299999)
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[connection signal="body_entered" from="AreaPCKey" to="." method="_on_area_pc_key_body_entered"]
