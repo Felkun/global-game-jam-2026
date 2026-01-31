@@ -175,3 +175,4 @@ format = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1004627108]
 tile_set = SubResource("TileSet_7mycd")
+[node name="prova" type="WorldEnvironment" parent="." unique_id=862528209]
