@@ -164,3 +164,5 @@ script = SubResource("GDScript_0xm2m")
 position = Vector2(124, 64)
 tile_set = SubResource("TileSet_lquwl")
 format = 2
+
+[node name="prova" type="WorldEnvironment" parent="." unique_id=862528209]
