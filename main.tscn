@@ -5,9 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bki48q86p7y32" path="res://asset/the-musquerade/images/tileset.png" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://camq2tmkbwq1w" path="res://asset/the-musquerade/images/tileset pavimento1.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="3_1bvp3"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://c7yaflq5xt07b" path="res://asset/the-musquerade/images/tavolo.png" id="5_kek77"]
 [ext_resource type="Script" uid="uid://c71bne0drtswi" path="res://porte.gd" id="7_4c57u"]
 [ext_resource type="Texture2D" uid="uid://bwb7u3vq3jabx" path="res://asset/the-musquerade/images/cravatta meccanico.png" id="8_efxa6"]
+=======
+[ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
+>>>>>>> main
 [ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bi0maqvvktqyi" path="res://asset/the-musquerade/images/nuovo pavimento2.png" id="4_7mycd"]
 
@@ -202,6 +206,7 @@ metadata/_edit_group_ = true
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
 metadata/_edit_group_ = true
 
+<<<<<<< HEAD
 [node name="AreaPCKey" type="Area2D" parent="." unique_id=355690790]
 position = Vector2(1695, 1594)
 scale = Vector2(10, 10)
