@@ -178,10 +178,10 @@ rotation = -3.1415925
 position = Vector2(-1880, -126.499756)
 shape = SubResource("RectangleShape2D_7mycd")
 
-[node name="Path2DEnemy1" type="Path2D" parent="." unique_id=2011038749]
+[node name="Path2D" type="Path2D" parent="." unique_id=2011038749]
 curve = SubResource("Curve2D_7mycd")
 
-[node name="PathFollow2DEnemy1" type="PathFollow2D" parent="Path2DEnemy1" unique_id=497892701]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=497892701]
 position = Vector2(79.5464, 513)
 rotation = -0.005964144
 progress = 59.55
@@ -193,7 +193,7 @@ script = ExtResource("6_272bh")
 position = Vector2(49.547516, 511)
 rotation = -0.005964144
 script = ExtResource("8_5vw27")
-ghost_path = NodePath("../Path2DEnemy1/PathFollow2DEnemy1")
+ghost_path = NodePath("../Path2D/PathFollow2D")
 
 [node name="CravattaMeccanico" type="Sprite2D" parent="." unique_id=233887202]
 position = Vector2(1477, 1709)
@@ -226,9 +226,3 @@ shape = SubResource("RectangleShape2D_w48qg")
 [node name="Up" type="CollisionShape2D" parent="Porte" unique_id=311655701]
 position = Vector2(642, 762)
 shape = SubResource("RectangleShape2D_w48qg")
-
-[node name="Enemy2" parent="." unique_id=2092594994 node_paths=PackedStringArray("ghost_path") instance=ExtResource("6_7mycd")]
-position = Vector2(237.00012, 863.0001)
-rotation = -0.005964144
-script = ExtResource("8_5vw27")
-ghost_path = NodePath("../Path2DEnemy1/PathFollow2DEnemy1")
