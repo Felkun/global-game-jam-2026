@@ -1,0 +1,275 @@
+[gd_scene format=3 uid="uid://bd3a3n0i75l7t"]
+
+[ext_resource type="Script" uid="uid://dl7d1kch7tac" path="res://credits_splash.gd" id="1_3jqy2"]
+[ext_resource type="FontFile" uid="uid://1xb7s352fhll" path="res://asset/the-musquerade/fonts/Pixeled.ttf" id="1_3yxwy"]
+
+[sub_resource type="Animation" id="Animation_y7k74"]
+resource_name = "Fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.20000017, 1.5666667),
+"transitions": PackedFloat32Array(2.8284276, 2.8284276),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 1), Color(0.8235294, 0.11372549, 0.14901961, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oyqm6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kpexm"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.26666665, 1.2666667),
+"transitions": PackedFloat32Array(2.2191386, 2.2191386),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 0), Color(0.8235294, 0.11372549, 0.14901961, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jqy2"]
+_data = {
+&"Fade_in": SubResource("Animation_y7k74"),
+&"RESET": SubResource("Animation_oyqm6"),
+&"fade_out": SubResource("Animation_kpexm")
+}
+
+[sub_resource type="Animation" id="Animation_3jqy2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6mkpx"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 1), Color(0.8235294, 0.11372549, 0.14901961, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6tpj5"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.99, 2.88),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 0), Color(0.8235294, 0.11372549, 0.14901961, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7h308"]
+_data = {
+&"RESET": SubResource("Animation_3jqy2"),
+&"fade_in": SubResource("Animation_6mkpx"),
+&"fade_out": SubResource("Animation_6tpj5")
+}
+
+[node name="Control" type="Control" unique_id=1649131496]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jqy2")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1331487587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8235294, 0.11372549, 0.14901961, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1344320393]
+libraries/ = SubResource("AnimationLibrary_3jqy2")
+
+[node name="Presentation" type="RichTextLabel" parent="." unique_id=1931972486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 40
+text = "A game by:"
+horizontal_alignment = 1
+
+[node name="RiccardoMyst" type="RichTextLabel" parent="." unique_id=604259596]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -140.0
+offset_right = 382.0
+offset_bottom = -43.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Riccardo Myst"
+
+[node name="RiccardoMyst2" type="RichTextLabel" parent="." unique_id=1259613785]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = 50.0
+offset_right = 419.0
+offset_bottom = 147.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Leonardo Massa
+"
+
+[node name="RiccardoMyst3" type="RichTextLabel" parent="." unique_id=1344026803]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -140.0
+offset_right = 166.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Sgasao"
+horizontal_alignment = 1
+
+[node name="RiccardoMyst4" type="RichTextLabel" parent="." unique_id=7727679]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = 51.0
+offset_right = 166.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Felkun"
+horizontal_alignment = 1
+
+[node name="RiccardoMyst5" type="RichTextLabel" parent="." unique_id=1392342813]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -140.0
+offset_right = 166.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Sgasao"
+horizontal_alignment = 1
+
+[node name="RiccardoMyst6" type="RichTextLabel" parent="." unique_id=1852256904]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = -139.0
+offset_right = -21.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Sara Martis"
+horizontal_alignment = 1
+
+[node name="RiccardoMyst7" type="RichTextLabel" parent="." unique_id=926829437]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = 54.0
+offset_right = -21.0
+offset_bottom = 151.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3yxwy")
+theme_override_font_sizes/normal_font_size = 27
+text = "Giuliano Cau"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=694900335]
+libraries/ = SubResource("AnimationLibrary_7h308")
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer2" unique_id=531477640]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8235294, 0.11372549, 0.14901961, 1)

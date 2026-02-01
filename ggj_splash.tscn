@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bvnnd5mar0x8b"]
+
+[ext_resource type="Script" uid="uid://p261nx8vpj7g" path="res://ggj_splash.gd" id="1_i6q0g"]
+[ext_resource type="Texture2D" uid="uid://dw2j24ybdlxl6" path="res://asset/the-musquerade/images/Splash_localed.jpeg" id="2_f3f76"]
+
+[sub_resource type="Animation" id="Animation_y7k74"]
+resource_name = "Fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.20000017, 1.5666667),
+"transitions": PackedFloat32Array(2.8284276, 2.8284276),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 1), Color(0.8235294, 0.11372549, 0.14901961, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oyqm6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kpexm"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.26666665, 1.2666667),
+"transitions": PackedFloat32Array(2.2191386, 2.2191386),
+"update": 0,
+"values": [Color(0.8235294, 0.11372549, 0.14901961, 0), Color(0.8235294, 0.11372549, 0.14901961, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xoar"]
+_data = {
+&"Fade_in": SubResource("Animation_y7k74"),
+&"RESET": SubResource("Animation_oyqm6"),
+&"fade_out": SubResource("Animation_kpexm")
+}
+
+[node name="Control" type="Control" unique_id=1022590643]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i6q0g")
+
+[node name="Background" type="ColorRect" parent="." unique_id=968674390]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8235294, 0.11372549, 0.14901961, 1)
+
+[node name="CreditsImage" type="TextureRect" parent="." unique_id=323555825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f3f76")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=766297189]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8235294, 0.11372549, 0.14901961, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1302531054]
+libraries/ = SubResource("AnimationLibrary_3xoar")
