@@ -1,15 +1,16 @@
 [gd_scene format=4 uid="uid://dk8v5wweatq0o"]
 
 [ext_resource type="PackedScene" uid="uid://b12fhqld0phdm" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bjpktcp1netdp" path="res://main.gd" id="1_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bki48q86p7y32" path="res://asset/the-musquerade/images/tileset.png" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://camq2tmkbwq1w" path="res://asset/the-musquerade/images/tileset pavimento1.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="3_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bi0maqvvktqyi" path="res://asset/the-musquerade/images/nuovo pavimento2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://3tw3uf465m8p" path="res://enemy.tscn" id="6_7mycd"]
-[ext_resource type="Script" path="res://path_follow_2d.gd" id="6_272bh"]
-[ext_resource type="Script" path="res://porte.gd" id="7_4c57u"]
-[ext_resource type="Script" path="res://enemy.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://c4n1k8u1neuiy" path="res://path_follow_2d.gd" id="6_272bh"]
+[ext_resource type="Script" uid="uid://c71bne0drtswi" path="res://porte.gd" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bwb7u3vq3jabx" path="res://asset/the-musquerade/images/cravatta meccanico.png" id="8_efxa6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
@@ -92,6 +93,10 @@ sources/2 = SubResource("TileSetAtlasSource_lquwl")
 sources/3 = SubResource("TileSetAtlasSource_7mycd")
 sources/4 = SubResource("TileSetAtlasSource_272bh")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efxa6"]
+radius = 6.0
+height = 278.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(4079, 20.000244)
 
@@ -105,12 +110,8 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efxa6"]
-radius = 67.0
-height = 134.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dg77c"]
-radius = 8.399994
+radius = 1.0
 height = 26.799988
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ycdy4"]
@@ -119,6 +120,7 @@ height = 26.799988
 size = Vector2(130, 36)
 
 [node name="main" type="Node2D" unique_id=556733197]
+script = ExtResource("1_dg77c")
 
 [node name="Pavimento" type="TileMapLayer" parent="." unique_id=1931102264]
 texture_filter = 1
@@ -135,6 +137,16 @@ tile_set = SubResource("TileSet_lquwl")
 texture_filter = 1
 tile_map_data = PackedByteArray("AAANAA0AAwAAAAAAAAAOAAQAAwABAAAAAAAMAAYAAwACAAAAAAANAAYAAwACAAAAAAAMAAgAAwACAAAAAAAOAAgAAwACAAAAAAAMAAcAAwACAAAAAAAFAAAAAwACAAAAAAAGAAAAAwACAAAAAAAHAAAAAwACAAAAAAAAAPj/AwACAAAAAAAPAPz/AwACAAAAAAAQAPn/AwACAAAAAAAPAPn/AwACAAAAAAAQAPj/AwACAAAAAAAMAPj/AwACAAAAAAAGAAsAAwACAAAAAAAFAAsAAwACAAAAAAAGAAwAAwACAAAAAAAEAAsAAwACAAAAAAAEAAwAAwACAAAAAAAFAAwAAwACAAAAAAAGAA0AAwACAAAAAAALAA0AAwACAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
+
+[node name="CravattaMeccanico" type="Sprite2D" parent="." unique_id=233887202]
+position = Vector2(1477, 1709)
+texture = ExtResource("8_efxa6")
+
+[node name="Area2D" type="Area2D" parent="CravattaMeccanico" unique_id=2091681916]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CravattaMeccanico/Area2D" unique_id=1911405521]
+position = Vector2(-63, 23)
+shape = SubResource("CapsuleShape2D_efxa6")
 
 [node name="Player" parent="." unique_id=1216278766 instance=ExtResource("1_0xm2m")]
 position = Vector2(1019, 1977)
@@ -195,22 +207,12 @@ rotation = -0.005964144
 script = ExtResource("8_5vw27")
 ghost_path = NodePath("../Path2D/PathFollow2D")
 
-[node name="CravattaMeccanico" type="Sprite2D" parent="." unique_id=233887202]
-position = Vector2(1477, 1709)
-texture = ExtResource("8_efxa6")
-
-[node name="Area2D" type="Area2D" parent="CravattaMeccanico" unique_id=2091681916]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CravattaMeccanico/Area2D" unique_id=1911405521]
-position = Vector2(-5, 26)
-shape = SubResource("CapsuleShape2D_efxa6")
-
 [node name="AreaPCKey" type="Area2D" parent="." unique_id=436433499]
 position = Vector2(1695, 1594)
 scale = Vector2(10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPCKey" unique_id=521429221]
-position = Vector2(5.7999997, 13.599998)
+position = Vector2(8.700002, 13.499998)
 shape = SubResource("CapsuleShape2D_dg77c")
 
 [node name="Porte" type="StaticBody2D" parent="." unique_id=175834019]
@@ -226,3 +228,7 @@ shape = SubResource("RectangleShape2D_w48qg")
 [node name="Up" type="CollisionShape2D" parent="Porte" unique_id=311655701]
 position = Vector2(642, 762)
 shape = SubResource("RectangleShape2D_w48qg")
+
+[connection signal="body_entered" from="CravattaMeccanico/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="CravattaMeccanico/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="AreaPCKey" to="Porte" method="_on_area_pc_key_body_entered"]
