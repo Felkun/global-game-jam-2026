@@ -7,8 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bi0maqvvktqyi" path="res://asset/the-musquerade/images/nuovo pavimento2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://3tw3uf465m8p" path="res://enemy.tscn" id="6_7mycd"]
-[ext_resource type="Script" uid="uid://c4n1k8u1neuiy" path="res://path_follow_2d.gd" id="6_272bh"]
-[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="8_5vw27"]
+[ext_resource type="Script" path="res://path_follow_2d.gd" id="6_272bh"]
+[ext_resource type="Script" path="res://porte.gd" id="7_4c57u"]
+[ext_resource type="Script" path="res://enemy.gd" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bwb7u3vq3jabx" path="res://asset/the-musquerade/images/cravatta meccanico.png" id="8_efxa6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("1_h2yge")
@@ -90,83 +92,12 @@ sources/2 = SubResource("TileSetAtlasSource_lquwl")
 sources/3 = SubResource("TileSetAtlasSource_7mycd")
 sources/4 = SubResource("TileSetAtlasSource_272bh")
 
-[sub_resource type="GDScript" id="GDScript_0xm2m"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 450.0
-enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
-var dir = current_direction.NONE
-func _physics_process(delta):
-	player_movement(delta)
-	transform.x
-func player_movement(delta):
-
-	if Input.is_action_pressed(\"move_up\"):
-		dir = current_direction.UP
-		play_anim(1)
-		velocity.x = 0
-		velocity.y = -SPEED
-	elif Input.is_action_pressed(\"move_down\"):
-		dir = current_direction.DOWN
-		play_anim(1)
-		velocity.x = 0
-		velocity.y = SPEED
-	elif Input.is_action_pressed(\"move_left\"):
-		dir = current_direction.LEFT
-		play_anim(1)
-		velocity.x = -SPEED
-		velocity.y = 0
-	elif Input.is_action_pressed(\"move_right\"):
-		dir = current_direction.RIGHT
-		play_anim(1)
-		velocity.x = SPEED
-		velocity.y = 0
-	else:
-		play_anim(0)
-		velocity.x = 0
-		velocity.y = 0
-	
-	move_and_slide()
-	
-func play_anim(movement):
-	var anim = $AnimatedSprite2D
-	
-	if dir == current_direction.RIGHT:
-		anim.flip_h = false
-		if movement == 1:
-			anim.play(\"side_walk\")
-		elif movement == 0:
-			anim.play(\"side_idle\")
-	elif dir == current_direction.LEFT:
-		anim.flip_h = true
-		if movement == 1:
-			anim.play(\"side_walk\")
-		elif movement == 0:
-			anim.play(\"side_idle\")
-	elif dir == current_direction.UP:
-		anim.flip_h = false
-		if movement == 1:
-			anim.play(\"back_walk\")
-		elif movement == 0:
-			anim.play(\"back_idle\")
-			
-	elif dir == current_direction.DOWN:
-		anim.flip_h = false
-		if movement == 1:
-			anim.play(\"front_walk\")
-		elif movement == 0:
-			anim.play(\"front_idle\")
-		
-	else:
-		anim.play(\"front_idle\")
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(4079, 20.000244)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(264, 259)
+
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 bake_interval = 3.02
 _data = {
@@ -174,8 +105,20 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efxa6"]
+radius = 67.0
+height = 134.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dg77c"]
+radius = 8.399994
+height = 26.799988
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ycdy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
+size = Vector2(130, 36)
+
 [node name="main" type="Node2D" unique_id=556733197]
-position = Vector2(-77, 81)
 
 [node name="Pavimento" type="TileMapLayer" parent="." unique_id=1931102264]
 texture_filter = 1
@@ -196,7 +139,6 @@ tile_set = SubResource("TileSet_lquwl")
 [node name="Player" parent="." unique_id=1216278766 instance=ExtResource("1_0xm2m")]
 position = Vector2(1019, 1977)
 motion_mode = 1
-script = SubResource("GDScript_0xm2m")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=73431029]
@@ -252,3 +194,35 @@ position = Vector2(49.547516, 511)
 rotation = -0.005964144
 script = ExtResource("8_5vw27")
 ghost_path = NodePath("../Path2D/PathFollow2D")
+
+[node name="CravattaMeccanico" type="Sprite2D" parent="." unique_id=233887202]
+position = Vector2(1477, 1709)
+texture = ExtResource("8_efxa6")
+
+[node name="Area2D" type="Area2D" parent="CravattaMeccanico" unique_id=2091681916]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CravattaMeccanico/Area2D" unique_id=1911405521]
+position = Vector2(-5, 26)
+shape = SubResource("CapsuleShape2D_efxa6")
+
+[node name="AreaPCKey" type="Area2D" parent="." unique_id=436433499]
+position = Vector2(1695, 1594)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPCKey" unique_id=521429221]
+position = Vector2(5.7999997, 13.599998)
+shape = SubResource("CapsuleShape2D_dg77c")
+
+[node name="Porte" type="StaticBody2D" parent="." unique_id=175834019]
+position = Vector2(1085, -1004)
+physics_material_override = SubResource("PhysicsMaterial_ycdy4")
+script = ExtResource("7_4c57u")
+metadata/_edit_group_ = true
+
+[node name="Down" type="CollisionShape2D" parent="Porte" unique_id=768599545]
+position = Vector2(2, -4)
+shape = SubResource("RectangleShape2D_w48qg")
+
+[node name="Up" type="CollisionShape2D" parent="Porte" unique_id=311655701]
+position = Vector2(642, 762)
+shape = SubResource("RectangleShape2D_w48qg")
