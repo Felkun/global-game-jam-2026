@@ -3,73 +3,19 @@
 [ext_resource type="Script" uid="uid://dl7d1kch7tac" path="res://credits_splash.gd" id="1_3jqy2"]
 [ext_resource type="FontFile" uid="uid://1xb7s352fhll" path="res://asset/the-musquerade/fonts/Pixeled.ttf" id="1_3yxwy"]
 
-[sub_resource type="Animation" id="Animation_y7k74"]
-resource_name = "Fade_in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.20000017, 1.5666667),
-"transitions": PackedFloat32Array(2.8284276, 2.8284276),
-"update": 0,
-"values": [Color(0.8235294, 0.11372549, 0.14901961, 1), Color(0.8235294, 0.11372549, 0.14901961, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_oyqm6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.8235294, 0.11372549, 0.14901961, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_kpexm"]
-resource_name = "fade_out"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.26666665, 1.2666667),
-"transitions": PackedFloat32Array(2.2191386, 2.2191386),
-"update": 0,
-"values": [Color(0.8235294, 0.11372549, 0.14901961, 0), Color(0.8235294, 0.11372549, 0.14901961, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jqy2"]
-_data = {
-&"Fade_in": SubResource("Animation_y7k74"),
-&"RESET": SubResource("Animation_oyqm6"),
-&"fade_out": SubResource("Animation_kpexm")
-}
-
 [sub_resource type="Animation" id="Animation_3jqy2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.8235294, 0.11372549, 0.14901961, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_6mkpx"]
@@ -78,14 +24,14 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 2.6),
+"times": PackedFloat32Array(0.97, 2.91),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.8235294, 0.11372549, 0.14901961, 1), Color(0.8235294, 0.11372549, 0.14901961, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6tpj5"]
@@ -94,14 +40,14 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer2/ColorRect:color")
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.99, 2.88),
+"times": PackedFloat32Array(0, 1.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.8235294, 0.11372549, 0.14901961, 0), Color(0.8235294, 0.11372549, 0.14901961, 1)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7h308"]
@@ -127,10 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8235294, 0.11372549, 0.14901961, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1344320393]
-libraries/ = SubResource("AnimationLibrary_3jqy2")
+color = Color(0, 0, 0, 1)
 
 [node name="Presentation" type="RichTextLabel" parent="." unique_id=1931972486]
 layout_mode = 1
@@ -263,13 +206,13 @@ theme_override_font_sizes/normal_font_size = 27
 text = "Giuliano Cau"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=694900335]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1300078231]
 libraries/ = SubResource("AnimationLibrary_7h308")
 
-[node name="ColorRect" type="ColorRect" parent="AnimationPlayer2" unique_id=531477640]
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer" unique_id=969338394]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8235294, 0.11372549, 0.14901961, 1)
+color = Color(0, 0, 0, 1)

@@ -1,11 +1,12 @@
 extends Control
 
-@export var next_scene_path: String = "res://TitleScreen.tscn"
+
+@export var next_scene_path: String = "res://main.tscn"
 
 func _ready() -> void:
-	$AnimationPlayer.play("Fade_in")
+	$AnimationPlayer.play("fade_in")
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(6.0).timeout
 	
 	$AnimationPlayer.play("fade_out")
 	

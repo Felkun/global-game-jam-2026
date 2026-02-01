@@ -79,6 +79,11 @@ func _update_animation(dir: Vector2):
 
 			anim_player.play(\"back_walk\")
 			detection_area.rotation_degrees = 270
+
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\" or body.is_in_group(\"player\"):
+		get_tree().reload_current_scene()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
