@@ -241,9 +241,21 @@ texture = ExtResource("13_vq5wx")
 position = Vector2(69, -417)
 texture = ExtResource("13_vq5wx")
 
-[node name="TavoloMuschio4" type="Sprite2D" parent="." unique_id=1404948465]
+[node name="TavoloMuschio5" type="Sprite2D" parent="." unique_id=858459523]
 position = Vector2(807.99994, -416)
 texture = ExtResource("13_vq5wx")
+
+[node name="CravattaMilitare" type="Sprite2D" parent="TavoloMuschio5" unique_id=1896235499]
+position = Vector2(-0.4741211, 1.0847168)
+scale = Vector2(0.4740741, 0.5423729)
+texture = ExtResource("15_hu7cd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TavoloMuschio5" unique_id=1001052092]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TavoloMuschio5/StaticBody2D" unique_id=578097985]
+position = Vector2(-1.8963633, -6.508478)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_btyf5")
 
 [node name="CravattaColtivatore" type="Sprite2D" parent="." unique_id=2013346691]
 position = Vector2(1469.9999, 525)
@@ -265,22 +277,10 @@ position = Vector2(7, 1)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_btyf5")
 
-[node name="TavoloMuschio5" type="Sprite2D" parent="." unique_id=25773793]
+[node name="TavoloMuschio6" type="Sprite2D" parent="." unique_id=25773793]
 position = Vector2(1856.0001, -961)
 scale = Vector2(2.109375, 1.84375)
 texture = ExtResource("13_vq5wx")
-
-[node name="CravattaMilitare" type="Sprite2D" parent="TavoloMuschio5" unique_id=1896235499]
-position = Vector2(-0.4741211, 1.0847168)
-scale = Vector2(0.4740741, 0.5423729)
-texture = ExtResource("15_hu7cd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TavoloMuschio5" unique_id=1001052092]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TavoloMuschio5/StaticBody2D" unique_id=578097985]
-position = Vector2(-1.8963633, -6.508478)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_btyf5")
 
 [node name="Player" parent="." unique_id=1216278766 instance=ExtResource("11_iywuh")]
 position = Vector2(1155, 2097)
@@ -311,7 +311,7 @@ shape = SubResource("RectangleShape2D_q2jkl")
 position = Vector2(1471.5, 585)
 shape = SubResource("RectangleShape2D_pic2u")
 
-[node name="CravattaMilitare" type="Sprite2D" parent="." unique_id=1896235499]
+[node name="CravattaMilitare" type="Sprite2D" parent="." unique_id=1571536237]
 position = Vector2(1855, -959.00006)
 texture = ExtResource("15_hu7cd")
 
