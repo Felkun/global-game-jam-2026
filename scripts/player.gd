@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
+@onready var anim = $TutaBase
 
 const SPEED = 450.0
 enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
 var dir = current_direction.NONE
-func _physics_process(delta):
-	player_movement(delta)
 
 func player_movement(delta):
 
@@ -37,7 +36,7 @@ func player_movement(delta):
 	move_and_slide()
 	
 func play_anim(movement):
-	var anim = $AnimatedSprite2D
+	
 	
 	if dir == current_direction.RIGHT:
 		anim.flip_h = false
@@ -67,3 +66,14 @@ func play_anim(movement):
 		
 	else:
 		anim.play("front_idle")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print ("funge")
+	$TutaBase.visible = false
+	$TutaMeccanico.visible = true
+	anim = $TutaMeccanico
+	
+
+func _physics_process(delta):
+	player_movement(delta)
