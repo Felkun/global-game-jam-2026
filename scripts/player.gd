@@ -77,3 +77,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _physics_process(delta):
 	player_movement(delta)
+
+
+func _on_area_militare_body_entered(body):
+	print ("funge")
+	$TutaBase.visible = false
+	$TutaMeccanico.visible = false
+	$TutaColtivatore.visible = false
+	$TutaMilitare.visible = true
+	anim = $TutaMilitare
+
+
+func _on_area_coltivatore_body_entered(body):
+	$TutaBase.visible = false
+	$TutaMeccanico.visible = false
+	$TutaMilitare.visible = false
+	$TutaColtivatore.visible = true
+	anim = $TutaColtivatore
