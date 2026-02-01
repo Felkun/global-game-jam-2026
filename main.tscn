@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://camq2tmkbwq1w" path="res://asset/the-musquerade/images/tileset pavimento1.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://5de7y8giov3n" path="res://asset/the-musquerade/images/tiles muro muschio.png" id="2_yaehf"]
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="3_1bvp3"]
-[ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bi0maqvvktqyi" path="res://asset/the-musquerade/images/nuovo pavimento2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" path="res://enemy.tscn" id="6_7mycd"]
 [ext_resource type="Script" path="res://path_follow_2d.gd" id="6_272bh"]
@@ -14,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://dadc8o852uqsd" path="res://asset/the-musquerade/images/pavimento muschio.png" id="7_074og"]
 [ext_resource type="Script" path="res://enemy.gd" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://cbryvxr8h2yum" path="res://asset/the-musquerade/images/grata.png" id="8_cegan"]
+[ext_resource type="PackedScene" uid="uid://3tw3uf465m8p" path="res://enemy.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c4n1k8u1neuiy" path="res://path_follow_2d.gd" id="6_272bh"]
+[ext_resource type="AudioStream" uid="uid://viro7apab5iv" path="res://asset/the-musquerade/audio/MUSIC_Level_Tense.wav" id="6_efxa6"]
+[ext_resource type="Script" uid="uid://c71bne0drtswi" path="res://porte.gd" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bwb7u3vq3jabx" path="res://asset/the-musquerade/images/cravatta meccanico.png" id="8_efxa6"]
 [ext_resource type="Texture2D" uid="uid://dvdobiul1avng" path="res://asset/the-musquerade/images/tavolo muschio.png" id="9_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfja31fg0hxb" path="res://asset/the-musquerade/images/auto.png" id="13_ycdy4"]
@@ -234,7 +238,7 @@ metadata/_edit_group_ = true
 metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1183614109]
-stream = ExtResource("4_1bvp3")
+stream = ExtResource("6_efxa6")
 autoplay = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=229347385]
@@ -278,11 +282,21 @@ rotates = false
 loop = false
 script = ExtResource("6_272bh")
 
-[node name="Enemy" parent="." unique_id=68590956 node_paths=PackedStringArray("ghost_path") instance=ExtResource("6_7mycd")]
+[node name="Enemy1" parent="." unique_id=68590956 node_paths=PackedStringArray("ghost_path") instance=ExtResource("6_7mycd")]
 position = Vector2(49.547516, 511)
 rotation = -0.005964144
 script = ExtResource("8_5vw27")
 ghost_path = NodePath("../Path2D/PathFollow2D")
+
+[node name="CravattaMeccanico" type="Sprite2D" parent="." unique_id=233887202]
+position = Vector2(1477, 1709)
+texture = ExtResource("8_efxa6")
+
+[node name="Area2DEnemy1" type="Area2D" parent="CravattaMeccanico" unique_id=2091681916]
+
+[node name="CollisionShape2DEnemy1" type="CollisionShape2D" parent="CravattaMeccanico/Area2DEnemy1" unique_id=1911405521]
+position = Vector2(-5, 26)
+shape = SubResource("CapsuleShape2D_efxa6")
 
 [node name="AreaPCKey" type="Area2D" parent="." unique_id=436433499]
 position = Vector2(1695, 1594)

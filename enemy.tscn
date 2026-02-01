@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3tw3uf465m8p"]
 
 [ext_resource type="Texture2D" uid="uid://o11p2tlwn1ro" path="res://asset/the-musquerade/images/meccanico-Sheet.png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://ce8net7t4b6qm" path="res://detection_area.gd" id="2_4gyqm"]
 
 [sub_resource type="GDScript" id="GDScript_7k104"]
 script/source = "extends CharacterBody2D
@@ -10,12 +11,16 @@ script/source = "extends CharacterBody2D
 @export var ghost_path: PathFollow2D
 
 @onready var anim_player = $AnimatedSprite2D
+@onready var detection_area = $DetectionArea
 
 
 
 func _physics_process(_delta):
 
 	if not ghost_path: return
+	
+	var dir = ghost_path.real_direction
+	velocity = dir * 150.0
 
 
 # Seguiamo il fantasma
@@ -48,12 +53,15 @@ func _update_animation(dir: Vector2):
 			anim_player.flip_h = false
 
 			anim_player.play(\"side_walk\")
+			
+			detection_area.rotation_degrees = 0
 
 		else:
 
 			anim_player.flip_h = true
 
 			anim_player.play(\"side_walk\")
+			detection_area.rotation_degrees = 180
 
 	else:
 
@@ -62,12 +70,19 @@ func _update_animation(dir: Vector2):
 			anim_player.flip_h = false
 
 			anim_player.play(\"front_walk\")
+			
+			detection_area.rotation_degrees = 90
 
 		else:
 
 			anim_player.flip_h = false
 
 			anim_player.play(\"back_walk\")
+			detection_area.rotation_degrees = 270
+
+func _on_detection_area_body_entered(body):
+	if body.name.to_lower() == \"player\" or body.is_in_group(\"player\"):
+		get_tree().reload_current_scene()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
@@ -338,6 +353,9 @@ animations = [{
 radius = 25.000004
 height = 68.0
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qi2p4"]
+points = PackedVector2Array(0, 0, 200, -64, 200, 64)
+
 [node name="enemy" type="CharacterBody2D" unique_id=68590956]
 script = SubResource("GDScript_7k104")
 
@@ -345,10 +363,17 @@ script = SubResource("GDScript_7k104")
 sprite_frames = SubResource("SpriteFrames_3yqyl")
 animation = &"back_idle"
 
-[node name="detection_area" type="Area2D" parent="AnimatedSprite2D" unique_id=1926171846]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1970788268]
 position = Vector2(0.99999994, 36.999996)
 rotation = 1.5707964
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_4gyqm")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1926171846]
+script = ExtResource("2_4gyqm")
+
+[node name="CollisionShape-detection" type="CollisionShape2D" parent="DetectionArea" unique_id=2039531005]
+position = Vector2(1, 0)
+shape = SubResource("ConvexPolygonShape2D_qi2p4")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
