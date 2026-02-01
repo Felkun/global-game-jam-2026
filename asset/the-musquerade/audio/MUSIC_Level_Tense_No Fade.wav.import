@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://l5uk53j273es"
+path="res://.godot/imported/MUSIC_Level_Tense_No Fade.wav-ea5798b0d0171f1df6f1717fb2bfca22.sample"
+
+[deps]
+
+source_file="res://asset/the-musquerade/audio/MUSIC_Level_Tense_No Fade.wav"
+dest_files=["res://.godot/imported/MUSIC_Level_Tense_No Fade.wav-ea5798b0d0171f1df6f1717fb2bfca22.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
