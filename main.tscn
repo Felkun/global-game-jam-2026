@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="3_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bi0maqvvktqyi" path="res://asset/the-musquerade/images/nuovo pavimento2.png" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://3tw3uf465m8p" path="res://enemy.tscn" id="6_7mycd"]
-[ext_resource type="Script" uid="uid://c4n1k8u1neuiy" path="res://path_follow_2d.gd" id="6_272bh"]
-[ext_resource type="Script" uid="uid://c71bne0drtswi" path="res://porte.gd" id="7_4c57u"]
-[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="8_5vw27"]
+[ext_resource type="PackedScene" path="res://enemy.tscn" id="6_7mycd"]
+[ext_resource type="Script" path="res://path_follow_2d.gd" id="6_272bh"]
+[ext_resource type="Script" path="res://porte.gd" id="7_4c57u"]
+[ext_resource type="Script" path="res://enemy.gd" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bwb7u3vq3jabx" path="res://asset/the-musquerade/images/cravatta meccanico.png" id="8_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dsfja31fg0hxb" path="res://asset/the-musquerade/images/auto.png" id="13_ycdy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("1_h2yge")
@@ -97,6 +98,15 @@ sources/4 = SubResource("TileSetAtlasSource_272bh")
 radius = 6.0
 height = 278.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vivmo"]
+size = Vector2(279, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(279, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaehf"]
+size = Vector2(278, 163)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(4079, 20.000244)
 
@@ -147,6 +157,36 @@ texture = ExtResource("8_efxa6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CravattaMeccanico/Area2D" unique_id=1911405521]
 position = Vector2(-63, 23)
 shape = SubResource("CapsuleShape2D_efxa6")
+
+[node name="Auto" type="Sprite2D" parent="." unique_id=67073579]
+position = Vector2(726, -766)
+texture = ExtResource("13_ycdy4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Auto" unique_id=1018821684]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Auto/StaticBody2D" unique_id=1502670189]
+position = Vector2(-16.5, 25)
+shape = SubResource("RectangleShape2D_vivmo")
+
+[node name="Auto2" type="Sprite2D" parent="." unique_id=825741843]
+position = Vector2(345, -453)
+texture = ExtResource("13_ycdy4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Auto2" unique_id=1314374204]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Auto2/StaticBody2D" unique_id=2059958099]
+position = Vector2(-17.5, 24.5)
+shape = SubResource("RectangleShape2D_2cqfq")
+
+[node name="Auto3" type="Sprite2D" parent="." unique_id=245105963]
+position = Vector2(1721, -763)
+texture = ExtResource("13_ycdy4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Auto3" unique_id=1435165055]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Auto3/StaticBody2D" unique_id=1821512793]
+position = Vector2(-17, 24.5)
+shape = SubResource("RectangleShape2D_yaehf")
 
 [node name="Player" parent="." unique_id=1216278766 instance=ExtResource("1_0xm2m")]
 position = Vector2(1019, 1977)
