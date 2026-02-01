@@ -18,7 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://dvdobiul1avng" path="res://asset/the-musquerade/images/tavolo muschio.png" id="9_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dsfja31fg0hxb" path="res://asset/the-musquerade/images/auto.png" id="13_ycdy4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_getpj"]
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+=======
+=======
+>>>>>>> Stashed changes
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaehf"]
 texture = ExtResource("2_yaehf")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -30,7 +36,11 @@ texture_region_size = Vector2i(128, 128)
 2:1/0 = 0
 3:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_074og"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 texture = ExtResource("1_h2yge")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -65,7 +75,7 @@ texture_region_size = Vector2i(128, 128)
 1:4/0 = 0
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, -64, 18.876, 64, 18.876, 64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cegan"]
 texture = ExtResource("2_h2yge")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -78,7 +88,7 @@ texture_region_size = Vector2i(128, 128)
 1:2/0 = 0
 2:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_82xsv"]
 texture = ExtResource("3_1bvp3")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -88,7 +98,7 @@ texture_region_size = Vector2i(128, 128)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-46.718117, 31.418617, -0.273201, 54.914276, 47.810944, 31.418617, 47.264534, -16.119122, 0.27320862, -39.06837, -47.264526, -16.665531)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_getpj"]
 texture = ExtResource("4_7mycd")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -115,13 +125,23 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 sources/2 = SubResource("TileSetAtlasSource_lquwl")
 sources/3 = SubResource("TileSetAtlasSource_7mycd")
 sources/4 = SubResource("TileSetAtlasSource_272bh")
-sources/0 = SubResource("TileSetAtlasSource_getpj")
+=======
+=======
+>>>>>>> Stashed changes
+sources/1 = SubResource("TileSetAtlasSource_074og")
+sources/2 = SubResource("TileSetAtlasSource_cegan")
+sources/3 = SubResource("TileSetAtlasSource_82xsv")
+sources/4 = SubResource("TileSetAtlasSource_getpj")
+sources/0 = SubResource("TileSetAtlasSource_yaehf")
 sources/5 = SubResource("TileSetAtlasSource_ryguw")
 sources/6 = SubResource("TileSetAtlasSource_d13ii")
+>>>>>>> Stashed changes
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efxa6"]
 radius = 6.0
@@ -157,6 +177,9 @@ height = 26.799988
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
 size = Vector2(130, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
+size = Vector2(124, 32)
 
 [node name="main" type="Node2D" unique_id=556733197]
 script = ExtResource("1_dg77c")
@@ -316,6 +339,14 @@ shape = SubResource("RectangleShape2D_w48qg")
 position = Vector2(642, 762)
 shape = SubResource("RectangleShape2D_w48qg")
 
+[node name="NextLevel" type="Area2D" parent="." unique_id=1687263657]
+position = Vector2(1019, 1977)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevel" unique_id=817776154]
+position = Vector2(69, -2948)
+shape = SubResource("RectangleShape2D_1u8w0")
+
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AreaPCKey" to="Porte" method="_on_area_pc_key_body_entered"]
+[connection signal="body_entered" from="NextLevel" to="." method="_on_next_level_body_entered"]
