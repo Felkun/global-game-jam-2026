@@ -15,8 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://dsfja31fg0hxb" path="res://asset/the-musquerade/images/auto.png" id="13_ycdy4"]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 =======
+=======
+>>>>>>> Stashed changes
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaehf"]
 texture = ExtResource("2_yaehf")
 texture_region_size = Vector2i(128, 128)
@@ -30,6 +33,9 @@ texture_region_size = Vector2i(128, 128)
 3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_074og"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 texture = ExtResource("1_h2yge")
 texture_region_size = Vector2i(128, 128)
@@ -106,11 +112,14 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 sources/2 = SubResource("TileSetAtlasSource_lquwl")
 sources/3 = SubResource("TileSetAtlasSource_7mycd")
 sources/4 = SubResource("TileSetAtlasSource_272bh")
 =======
+=======
+>>>>>>> Stashed changes
 sources/1 = SubResource("TileSetAtlasSource_074og")
 sources/2 = SubResource("TileSetAtlasSource_cegan")
 sources/3 = SubResource("TileSetAtlasSource_82xsv")
