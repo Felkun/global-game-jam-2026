@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="3_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://kyglrqtm8dgf" path="res://asset/the-musquerade/audio/MUSIC_City_Hub.wav" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bi0maqvvktqyi" path="res://asset/the-musquerade/images/nuovo pavimento2.png" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://3tw3uf465m8p" path="res://enemy.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c4n1k8u1neuiy" path="res://path_follow_2d.gd" id="6_272bh"]
+[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="8_5vw27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("1_h2yge")
@@ -96,7 +99,7 @@ enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
 var dir = current_direction.NONE
 func _physics_process(delta):
 	player_movement(delta)
-
+	transform.x
 func player_movement(delta):
 
 	if Input.is_action_pressed(\"move_up\"):
@@ -164,6 +167,12 @@ size = Vector2(4079, 20.000244)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(264, 259)
+[sub_resource type="Curve2D" id="Curve2D_7mycd"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 20, 513, 0, 0, 0, 0, 880, 513, 0, 0, 0, 0, 880, 940, 0, 0, 0, 0, 1020, 940, 0, 0, 0, 0, 1020, 1500, 0, 0, 0, 0, 1020, 940, 0, 0, 0, 0, 880, 940, 0, 0, 0, 0, 880, 513, 0, 0, 0, 0, 20, 513)
+}
+point_count = 9
 
 [node name="main" type="Node2D" unique_id=556733197]
 position = Vector2(-77, 81)
@@ -226,3 +235,20 @@ rotation = -3.1415925
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D5" unique_id=1026482193]
 position = Vector2(-1880, -126.499756)
 shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=2011038749]
+curve = SubResource("Curve2D_7mycd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=497892701]
+position = Vector2(79.5464, 513)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+loop = false
+script = ExtResource("6_272bh")
+
+[node name="Enemy" parent="." unique_id=68590956 node_paths=PackedStringArray("ghost_path") instance=ExtResource("6_7mycd")]
+position = Vector2(49.547516, 511)
+rotation = -0.005964144
+script = ExtResource("8_5vw27")
+ghost_path = NodePath("../Path2D/PathFollow2D")
