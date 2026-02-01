@@ -79,6 +79,10 @@ func _update_animation(dir: Vector2):
 
 			anim_player.play(\"back_walk\")
 			detection_area.rotation_degrees = 270
+
+func _on_detection_area_body_entered(body):
+	if body.name.to_lower() == \"player\" or body.is_in_group(\"player\"):
+		get_tree().reload_current_scene()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
@@ -345,12 +349,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qi2p4"]
-points = PackedVector2Array(0, 0, 200, -64, 200, 64)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gyqm"]
 radius = 25.000004
 height = 68.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qi2p4"]
+points = PackedVector2Array(0, 0, 200, -64, 200, 64)
 
 [node name="enemy" type="CharacterBody2D" unique_id=68590956]
 script = SubResource("GDScript_7k104")
@@ -359,17 +363,17 @@ script = SubResource("GDScript_7k104")
 sprite_frames = SubResource("SpriteFrames_3yqyl")
 animation = &"back_idle"
 
-[node name="DetectionArea" type="Area2D" parent="AnimatedSprite2D" unique_id=1926171846]
-script = ExtResource("2_4gyqm")
-
-[node name="CollisionShape-detection" type="CollisionShape2D" parent="AnimatedSprite2D/DetectionArea" unique_id=2039531005]
-position = Vector2(1, 0)
-shape = SubResource("ConvexPolygonShape2D_qi2p4")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1970788268]
 position = Vector2(0.99999994, 36.999996)
 rotation = 1.5707964
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_4gyqm")
 
-[connection signal="body_entered" from="AnimatedSprite2D/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1926171846]
+script = ExtResource("2_4gyqm")
+
+[node name="CollisionShape-detection" type="CollisionShape2D" parent="DetectionArea" unique_id=2039531005]
+position = Vector2(1, 0)
+shape = SubResource("ConvexPolygonShape2D_qi2p4")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
