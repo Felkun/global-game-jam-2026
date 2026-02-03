@@ -34,10 +34,27 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_pkhjh"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.09),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g3l3g"]
 _data = {
 &"RESET": SubResource("Animation_skwql"),
-&"fade_in": SubResource("Animation_6iguo")
+&"fade_in": SubResource("Animation_6iguo"),
+&"fade_out": SubResource("Animation_pkhjh")
 }
 
 [node name="Control" type="Control" unique_id=535669773]

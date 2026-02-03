@@ -1,7 +1,7 @@
 extends Control
 
 
-@export var next_scene_path: String = "res://main.tscn"
+@export var next_scene_path: String = "res://lv1.tscn"
 
 func _ready() -> void:
 	$AnimationPlayer.play("fade_in")
