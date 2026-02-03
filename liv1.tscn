@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://ddgg0qlvc7h2j"]
 
-[ext_resource type="Script" uid="uid://68cbmdy2sw31" path="res://liv1.gd" id="1_r3n05"]
 [ext_resource type="Texture2D" uid="uid://bki48q86p7y32" path="res://asset/the-musquerade/images/tileset.png" id="2_isqim"]
 [ext_resource type="Texture2D" uid="uid://camq2tmkbwq1w" path="res://asset/the-musquerade/images/tileset pavimento1.png" id="3_1wwpl"]
 [ext_resource type="Texture2D" uid="uid://d1u8w6abupakr" path="res://asset/the-musquerade/images/Sprites.png" id="4_2gl6a"]
@@ -85,7 +84,6 @@ radius = 67.0
 height = 134.0
 
 [node name="liv1" type="Node2D" unique_id=556733197]
-script = ExtResource("1_r3n05")
 
 [node name="Pavimento" type="TileMapLayer" parent="." unique_id=1931102264]
 texture_filter = 1
