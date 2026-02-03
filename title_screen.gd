@@ -1,7 +1,7 @@
 extends Control
 
 
-@export var next_scene_path: String = "res://main.tscn"
+@export var next_scene_path: String = "res://lv1.tscn"
 
 func _ready() -> void:
 	$AnimationPlayer.play("fade_in")
@@ -12,4 +12,4 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(3.0).timeout
 	
-	get_tree().change_scene_to_file(next_scene_path)
+	get_tree().change_scene_to_file.call_deferred(next_scene_path)

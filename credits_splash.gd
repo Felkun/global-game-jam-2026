@@ -12,4 +12,4 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(3.0).timeout
 	
-	get_tree().change_scene_to_file(next_scene_path)
+	get_tree().change_scene_to_file.call_deferred(next_scene_path)

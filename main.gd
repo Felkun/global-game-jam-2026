@@ -1,11 +1,6 @@
 extends Node2D
 
-func _on_area_2d_body_entered(_body: Node2D) -> void:
-		$CravattaMeccanico.visible = false
-		 
+@export var next_scene_path: String = "res://credits_splash.tscn"
 
-
-func _on_next_level_body_entered(body):
-	get_tree().change_scene_to_file("res://liv2.tscn")
-	
-	
+func _ready() -> void:
+	get_tree().change_scene_to_file.call_deferred(next_scene_path)
