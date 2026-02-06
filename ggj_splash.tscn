@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvnnd5mar0x8b"]
+[gd_scene format=3 uid="uid://1ocs8iw7eblo"]
 
 [ext_resource type="Script" uid="uid://p261nx8vpj7g" path="res://ggj_splash.gd" id="1_i6q0g"]
 [ext_resource type="Texture2D" uid="uid://dw2j24ybdlxl6" path="res://asset/the-musquerade/images/Splash_localed.jpeg" id="2_f3f76"]
