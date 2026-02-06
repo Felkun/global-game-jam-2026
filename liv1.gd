@@ -1,8 +1,10 @@
 extends Node2D
+
 @export var next_scene_path: String = "res://liv2.tscn"
+
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-		$CravattaMeccanico.visible = false
-		 
+	$CravattaMeccanico.visible = false
+	print ("cravatta")
 
 
 func _on_next_level_body_entered(body):

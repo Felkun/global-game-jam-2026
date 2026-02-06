@@ -1,6 +1,5 @@
 extends Control
 
-
 @export var next_scene_path: String = "res://ggj_splash.tscn"
 
 func _ready() -> void:

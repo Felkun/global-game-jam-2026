@@ -2,6 +2,7 @@ extends Control
 
 @export var next_scene_path: String = "res://TitleScreen.tscn"
 
+
 func _ready() -> void:
 	$AnimationPlayer.play("Fade_in")
 	

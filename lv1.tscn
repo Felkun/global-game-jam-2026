@@ -293,10 +293,6 @@ rotation = -0.005964144
 script = ExtResource("16_3y0jh")
 ghost_path = NodePath("../Path2D/PathFollow2D")
 
-[node name="CravattaMeccanico2" type="Sprite2D" parent="." unique_id=1786018257]
-position = Vector2(1477, 1709)
-texture = ExtResource("10_gikn8")
-
 [node name="AreaPCKey" type="Area2D" parent="." unique_id=436433499]
 position = Vector2(1695, 1594)
 scale = Vector2(10, 10)
