@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim = $TutaBase
 
+
 const SPEED = 450.0
 enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
 var dir = current_direction.NONE
