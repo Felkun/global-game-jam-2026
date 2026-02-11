@@ -74,12 +74,9 @@ func _update_animation(dir: Vector2):
 			anim_player.play("back_walk")
 			detection_area.rotation_degrees = 270
 
-
-
 func _on_detection_area_body_entered(body):
 	if body.name.to_lower() == "player" or body.is_in_group("player"):
-		print ("vdf")
 		var tuta = body.get_node("TutaMeccanico")
 		if tuta.visible == false:
 			print("Visible:", tuta.visible)
-			get_tree().reload_current_scene()
+			get_tree().call_deferred("reload_current_scene")
