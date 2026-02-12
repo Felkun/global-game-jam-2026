@@ -6,8 +6,15 @@ extends CharacterBody2D
 
 @onready var anim_player = $AnimatedSprite2D
 @onready var detection_area = $DetectionArea
+@onready var shapecast = $ShapeCast2D
 
+var player_in_range = null
 
+func _ready() -> void:
+	#the shapecast will ignore enemy body as collider
+	shapecast.add_exception(self)
+	shapecast.add_exception(detection_area)
+	shapecast.enabled = true
 
 func _physics_process(_delta):
 
@@ -15,7 +22,25 @@ func _physics_process(_delta):
 	
 	var dir = ghost_path.real_direction
 	velocity = dir * 150.0
+	#implementation shapecast to avoid detection behind walls
 
+	if player_in_range != null:
+
+		var target_vec = shapecast.to_local(player_in_range.global_position)
+		shapecast.target_position = target_vec * 1.1
+		shapecast.force_shapecast_update()
+		print("pre colliding check")
+		if shapecast.is_colliding():
+			for i in shapecast.get_collision_count():
+				var collider = shapecast.get_collider(i)
+				print("Shape collided with: ", shapecast.get_collider(i).name)
+				if collider == player_in_range:
+					print("GOTCHA CON SHAPECAST")
+					get_tree().call_deferred("reload_current_scene")
+		else:
+			var dist = shapecast.global_position.distance_to(player_in_range.global_position)
+			print("Non colpisco nulla. Distanza dal player: ", dist, " Lunghezza raggio: ", shapecast.target_position.length())
+			
 
 # Seguiamo il fantasma
 
@@ -79,4 +104,8 @@ func _on_detection_area_body_entered(body):
 		var tuta = body.get_node("TutaMeccanico")
 		if tuta.visible == false:
 			print("Visible:", tuta.visible)
-			get_tree().call_deferred("reload_current_scene")
+			player_in_range = body
+			
+func _on_detection_area_body_exited(body):
+	if body.name.to_lower() == "player" or body.is_in_group("player"):
+		player_in_range = null
