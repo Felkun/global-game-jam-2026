@@ -34,7 +34,7 @@ func _physics_process(_delta):
 			for i in shapecast.get_collision_count():
 				var collider = shapecast.get_collider(i)
 				print("Shape collided with: ", shapecast.get_collider(i).name)
-				if collider == player_in_range:
+				if collider == player_in_range || collider.name == "DetectionHitbox":
 					print("GOTCHA CON SHAPECAST")
 					get_tree().call_deferred("reload_current_scene")
 		else:

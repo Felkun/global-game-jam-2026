@@ -276,10 +276,10 @@ height = 68.0
 points = PackedVector2Array(0, 0, 300, -64, 300, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
-radius = 93.59
+radius = 80.71
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
-radius = 15.0
+radius = 20.0
 
 [node name="enemy" type="CharacterBody2D" unique_id=68590956]
 script = ExtResource("1_qi2p4")
@@ -306,7 +306,7 @@ shape = SubResource("CircleShape2D_iifgy")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1881320148]
 shape = SubResource("CircleShape2D_qi2p4")
-target_position = Vector2(0, 20)
+target_position = Vector2(0, 0)
 collision_mask = 31
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
