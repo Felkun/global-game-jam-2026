@@ -1,89 +1,8 @@
 [gd_scene format=3 uid="uid://3tw3uf465m8p"]
 
 [ext_resource type="Texture2D" uid="uid://o11p2tlwn1ro" path="res://asset/the-musquerade/images/meccanico-Sheet.png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="1_qi2p4"]
 [ext_resource type="Script" uid="uid://ce8net7t4b6qm" path="res://detection_area.gd" id="2_4gyqm"]
-
-[sub_resource type="GDScript" id="GDScript_7k104"]
-script/source = "extends CharacterBody2D
-
-
-
-@export var ghost_path: PathFollow2D
-
-@onready var anim_player = $AnimatedSprite2D
-@onready var detection_area = $DetectionArea
-
-
-
-func _physics_process(_delta):
-
-	if not ghost_path: return
-	
-	var dir = ghost_path.real_direction
-	velocity = dir * 150.0
-
-
-# Seguiamo il fantasma
-
-	velocity = ghost_path.real_direction * 150.0 # Usa la velocità dell'NPC
-
-	move_and_slide()
-
-
-	_update_animation(ghost_path.real_direction)
-
-
-
-func _update_animation(dir: Vector2):
-
-	if dir == Vector2.ZERO:
-
-		anim_player.play(\"front_idle\")
-
-		return
-
-
-
-	# Determina la direzione prevalente
-
-	if abs(dir.x) > abs(dir.y):
-
-		if dir.x > 0:
-
-			anim_player.flip_h = false
-
-			anim_player.play(\"side_walk\")
-			
-			detection_area.rotation_degrees = 0
-
-		else:
-
-			anim_player.flip_h = true
-
-			anim_player.play(\"side_walk\")
-			detection_area.rotation_degrees = 180
-
-	else:
-
-		if dir.y > 0:
-
-			anim_player.flip_h = false
-
-			anim_player.play(\"front_walk\")
-			
-			detection_area.rotation_degrees = 90
-
-		else:
-
-			anim_player.flip_h = false
-
-			anim_player.play(\"back_walk\")
-			detection_area.rotation_degrees = 270
-
-func _on_detection_area_body_entered(body):
-	if body.name.to_lower() == \"player\" or body.is_in_group(\"player\"):
-		get_tree().reload_current_scene()
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
 atlas = ExtResource("1_7k104")
@@ -354,10 +273,16 @@ radius = 25.000004
 height = 68.0
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qi2p4"]
-points = PackedVector2Array(0, 0, 200, -64, 200, 64)
+points = PackedVector2Array(0, 0, 300, -64, 300, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
+radius = 80.71
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
+radius = 20.0
 
 [node name="enemy" type="CharacterBody2D" unique_id=68590956]
-script = SubResource("GDScript_7k104")
+script = ExtResource("1_qi2p4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1645887124]
 sprite_frames = SubResource("SpriteFrames_3yqyl")
@@ -376,4 +301,13 @@ script = ExtResource("2_4gyqm")
 position = Vector2(1, 0)
 shape = SubResource("ConvexPolygonShape2D_qi2p4")
 
+[node name="CollisionShape-near" type="CollisionShape2D" parent="DetectionArea" unique_id=1843709205]
+shape = SubResource("CircleShape2D_iifgy")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1881320148]
+shape = SubResource("CircleShape2D_qi2p4")
+target_position = Vector2(0, 0)
+collision_mask = 31
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

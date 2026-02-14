@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://viro7apab5iv" path="res://asset/the-musquerade/audio/MUSIC_Level_Tense.wav" id="13_01ogj"]
 [ext_resource type="Script" uid="uid://c4n1k8u1neuiy" path="res://path_follow_2d.gd" id="14_qlv6x"]
 [ext_resource type="PackedScene" uid="uid://3tw3uf465m8p" path="res://enemy.tscn" id="15_gkw17"]
-[ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="16_3y0jh"]
 [ext_resource type="Script" uid="uid://c71bne0drtswi" path="res://porte.gd" id="17_qewad"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcs4h"]
@@ -145,9 +144,9 @@ size = Vector2(3809, 259)
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 bake_interval = 3.02
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 20, 513, 0, 0, 0, 0, 880, 513, 0, 0, 0, 0, 880, 940, 0, 0, 0, 0, 1020, 940, 0, 0, 0, 0, 1020, 1500, 0, 0, 0, 0, 1020, 940, 0, 0, 0, 0, 880, 940, 0, 0, 0, 0, 880, 513, 0, 0, 0, 0, 20, 513)
+"points": PackedVector2Array(0, 0, 0, 0, 20, 513, 0, 0, 0, 0, 880, 513, 0, 0, 0, 0, 880, 940, 0, 0, 0, 0, 1020, 940, 0, 0, 0, 0, 1020, 1500, 0, 0, 0, 0, 1020, 1580, 0, 0, 0, 0, 1020, 940, 0, 0, 0, 0, 880, 940, 0, 0, 0, 0, 880, 513, 0, 0, 0, 0, 20, 513)
 }
-point_count = 9
+point_count = 10
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dg77c"]
 radius = 1.0
@@ -290,7 +289,6 @@ script = ExtResource("14_qlv6x")
 [node name="Enemy1" parent="." unique_id=68590956 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
 position = Vector2(49.547516, 511)
 rotation = -0.005964144
-script = ExtResource("16_3y0jh")
 ghost_path = NodePath("../Path2D/PathFollow2D")
 
 [node name="AreaPCKey" type="Area2D" parent="." unique_id=436433499]
