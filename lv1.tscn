@@ -160,6 +160,13 @@ size = Vector2(130, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
 size = Vector2(124, 32)
 
+[sub_resource type="Curve2D" id="Curve2D_wleo2"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1410, -40, 0, 0, 0, 0, 1410, 1190, 0, 0, 0, 0, 2030, 1190, 0, 0, 0, 0, 2030, -40, 0, 0, 0, 0, 1410, -40)
+}
+point_count = 5
+
 [node name="lv1" type="Node2D" unique_id=556733197]
 script = ExtResource("1_xtgsp")
 
@@ -319,6 +326,23 @@ position = Vector2(1019, 1977)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevel" unique_id=817776154]
 position = Vector2(69, -2948)
 shape = SubResource("RectangleShape2D_1u8w0")
+
+[node name="Enemy2" parent="." unique_id=1623477419 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(1411, -39.999985)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D2/PathFollow2D2")
+
+[node name="Path2D2" type="Path2D" parent="." unique_id=101651983]
+physics_interpolation_mode = 1
+curve = SubResource("Curve2D_wleo2")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D2" unique_id=2129600985]
+position = Vector2(1409.9999, 19.550007)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
 
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="Player" method="_on_area_2d_body_entered"]
