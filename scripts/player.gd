@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var waitTime = 18.0
+@export var waitTime = 10.0
 @onready var anim = $TutaBase
 @onready var timer = $Timer
 
