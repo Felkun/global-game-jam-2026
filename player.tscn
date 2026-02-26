@@ -1074,7 +1074,7 @@ script = ExtResource("1_onrkg")
 
 [node name="TutaBase" type="AnimatedSprite2D" parent="." unique_id=179498120]
 sprite_frames = SubResource("SpriteFrames_khis8")
-animation = &"back_idle"
+animation = &"side_walk"
 
 [node name="TutaMeccanico" type="AnimatedSprite2D" parent="." unique_id=951663289]
 visible = false
@@ -1103,3 +1103,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionHitbox" unique_id=881449594]
 position = Vector2(1, 12)
 shape = SubResource("RectangleShape2D_sweqy")
+
+[node name="Timer" type="Timer" parent="." unique_id=1648687800]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

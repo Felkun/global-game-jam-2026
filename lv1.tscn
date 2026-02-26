@@ -160,6 +160,48 @@ size = Vector2(130, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
 size = Vector2(124, 32)
 
+[sub_resource type="Curve2D" id="Curve2D_wleo2"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1410, -40, 0, 0, 0, 0, 1410, 1190, 0, 0, 0, 0, 2030, 1190, 0, 0, 0, 0, 2030, -40, 0, 0, 0, 0, 1410, -40)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_xtgsp"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1125, -35, 0, 0, 0, 0, 1036, -35, 0, 0, 0, 0, 1125, -35)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_1p42x"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1128, -36, 0, 0, 0, 0, 1008, -36, 0, 0, 0, 0, 1128, -36)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_niv7n"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -300, -1890, 0, 0, 0, 0, 230, -1890, 0, 0, 0, 0, 230, -1671, 0, 0, 0, 0, -300, -1671, 0, 0, 0, 0, -300, -1890)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_xbqbs"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1043, -1579, 0, 0, 0, 0, 614, -1579, 0, 0, 0, 0, 614, -1825, 0, 0, 0, 0, 1043, -1825, 0, 0, 0, 0, 1043, -1579)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_ll5gf"]
+bake_interval = 3.02
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1359, -1566, 0, 0, 0, 0, 1101, -1566, 0, 0, 0, 0, 1359, -1566)
+}
+point_count = 3
+
 [node name="lv1" type="Node2D" unique_id=556733197]
 script = ExtResource("1_xtgsp")
 
@@ -319,6 +361,113 @@ position = Vector2(1019, 1977)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevel" unique_id=817776154]
 position = Vector2(69, -2948)
 shape = SubResource("RectangleShape2D_1u8w0")
+
+[node name="Enemy2" parent="." unique_id=1623477419 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(1411, -39.999985)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D2/PathFollow2D2")
+
+[node name="Path2D2" type="Path2D" parent="." unique_id=101651983]
+physics_interpolation_mode = 1
+curve = SubResource("Curve2D_wleo2")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D2" unique_id=2129600985]
+position = Vector2(1409.9999, 19.550007)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
+
+[node name="Enemy3" parent="." unique_id=2068192809 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(1690.9999, 318)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D3/PathFollow2D3")
+
+[node name="Path2D3" type="Path2D" parent="." unique_id=1107910646]
+physics_interpolation_mode = 1
+position = Vector2(563, 354)
+curve = SubResource("Curve2D_xtgsp")
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D3" unique_id=1780372370]
+position = Vector2(1065.45, -35)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
+
+[node name="Enemy4" parent="." unique_id=787367708 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(1987.9999, 959.9999)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D4/PathFollow2D4")
+
+[node name="Path2D4" type="Path2D" parent="." unique_id=1620916824]
+physics_interpolation_mode = 1
+position = Vector2(859, 994.99994)
+curve = SubResource("Curve2D_1p42x")
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="Path2D4" unique_id=688737102]
+position = Vector2(1068.45, -36)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
+
+[node name="Enemy5" parent="." unique_id=141059068 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(515, -894.99994)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D5/PathFollow2D5")
+
+[node name="Path2D5" type="Path2D" parent="." unique_id=1741939838]
+physics_interpolation_mode = 1
+position = Vector2(859, 994.99994)
+curve = SubResource("Curve2D_niv7n")
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="Path2D5" unique_id=384691420]
+position = Vector2(-240.45, -1890)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
+
+[node name="Enemy6" parent="." unique_id=1080569672 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(1902.9999, -583.99994)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D6/PathFollow2D6")
+
+[node name="Path2D6" type="Path2D" parent="." unique_id=311995565]
+physics_interpolation_mode = 1
+position = Vector2(859, 994.99994)
+curve = SubResource("Curve2D_xbqbs")
+
+[node name="PathFollow2D6" type="PathFollow2D" parent="Path2D6" unique_id=1159950202]
+position = Vector2(983.45, -1579)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
+
+[node name="Enemy7" parent="." unique_id=1987983388 node_paths=PackedStringArray("ghost_path") instance=ExtResource("15_gkw17")]
+position = Vector2(256, -578)
+rotation = -0.011928288
+ghost_path = NodePath("../Path2D7/PathFollow2D7")
+
+[node name="Path2D7" type="Path2D" parent="." unique_id=1726329713]
+physics_interpolation_mode = 1
+position = Vector2(-1104, 990.00006)
+curve = SubResource("Curve2D_ll5gf")
+
+[node name="PathFollow2D7" type="PathFollow2D" parent="Path2D7" unique_id=1070160507]
+position = Vector2(1299.45, -1566)
+rotation = -0.005964144
+progress = 59.55
+rotates = false
+cubic_interp = false
+script = ExtResource("14_qlv6x")
 
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="Player" method="_on_area_2d_body_entered"]

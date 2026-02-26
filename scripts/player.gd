@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
+@export var waitTime = 18.0
 @onready var anim = $TutaBase
+@onready var timer = $Timer
 
 
 const SPEED = 450.0
 enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
 var dir = current_direction.NONE
+
+func _ready() -> void:
+	timer.wait_time = waitTime
 
 func player_movement(delta):
 
@@ -74,7 +79,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	$TutaBase.visible = false
 	$TutaMeccanico.visible = true
 	anim = $TutaMeccanico
-	
+	timer.start()
 
 func _physics_process(delta):
 	player_movement(delta)
@@ -87,6 +92,7 @@ func _on_area_militare_body_entered(body):
 	$TutaColtivatore.visible = false
 	$TutaMilitare.visible = true
 	anim = $TutaMilitare
+	timer.start()
 
 
 func _on_area_coltivatore_body_entered(body):
@@ -95,3 +101,12 @@ func _on_area_coltivatore_body_entered(body):
 	$TutaMilitare.visible = false
 	$TutaColtivatore.visible = true
 	anim = $TutaColtivatore
+	timer.start()
+
+
+func _on_timer_timeout() -> void:
+	$TutaBase.visible = true
+	$TutaMeccanico.visible = false
+	$TutaMilitare.visible = false
+	$TutaColtivatore.visible = false
+	anim = $TutaBase
