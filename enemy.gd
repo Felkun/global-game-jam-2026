@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-
+@export_enum("Up", "Down", "Left", "Right") var initial_direction: String = "Down"
 @export var ghost_path: PathFollow2D
 
 @onready var anim_player = $AnimatedSprite2D
@@ -15,13 +15,14 @@ func _ready() -> void:
 	shapecast.add_exception(self)
 	shapecast.add_exception(detection_area)
 	shapecast.enabled = true
+	_set_idle_position()
 
 func _physics_process(_delta):
 
-	if not ghost_path: return
-	
-	var dir = ghost_path.real_direction
-	velocity = dir * 150.0
+	if ghost_path:
+		var dir = ghost_path.real_direction
+		velocity = dir * 150.0
+		
 	#implementation shapecast to avoid detection behind walls
 
 	if player_in_range != null:
@@ -43,7 +44,8 @@ func _physics_process(_delta):
 			
 
 # Seguiamo il fantasma
-
+	if not ghost_path:
+		return
 	velocity = ghost_path.real_direction * 150.0 # Usa la velocità dell'NPC
 
 	move_and_slide()
@@ -98,6 +100,25 @@ func _update_animation(dir: Vector2):
 
 			anim_player.play("back_walk")
 			detection_area.rotation_degrees = 270
+
+func _set_idle_position():
+	match initial_direction:
+		"Up":
+			anim_player.flip_h = false
+			anim_player.play("back_idle")
+			detection_area.rotation_degrees = 270
+		"Down":
+			anim_player.flip_h = false
+			anim_player.play("front_idle")
+			detection_area.rotation_degrees = 90
+		"Left":
+			anim_player.flip_h = true
+			anim_player.play("side_idle")
+			detection_area.rotation_degrees = 180
+		"Right":
+			anim_player.flip_h = false
+			anim_player.play("side_idle")
+			detection_area.rotation_degrees = 0
 
 func _on_detection_area_body_entered(body):
 	if body.name.to_lower() == "player" or body.is_in_group("player"):

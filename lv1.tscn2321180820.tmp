@@ -469,8 +469,8 @@ rotates = false
 cubic_interp = false
 script = ExtResource("14_qlv6x")
 
-[node name="Enemy8" parent="." unique_id=1418833269 instance=ExtResource("15_gkw17")]
-position = Vector2(65.00001, 211)
+[node name="Enemy8" parent="." unique_id=357455233 instance=ExtResource("15_gkw17")]
+position = Vector2(386, 255.00002)
 rotation = -0.011928288
 
 [connection signal="body_entered" from="CravattaMeccanico/Area2D" to="." method="_on_area_2d_body_entered"]
