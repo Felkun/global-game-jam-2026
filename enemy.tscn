@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://o11p2tlwn1ro" path="res://asset/the-musquerade/images/meccanico-Sheet.png" id="1_7k104"]
 [ext_resource type="Script" uid="uid://efv1u1b8rqub" path="res://enemy.gd" id="1_qi2p4"]
 [ext_resource type="Script" uid="uid://ce8net7t4b6qm" path="res://detection_area.gd" id="2_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://0oyydbj04fs5" path="res://asset/the-musquerade/images/ExclamationPoint.png" id="4_iifgy"]
+[ext_resource type="AudioStream" uid="uid://ci4mkd8sg2vj3" path="res://asset/the-musquerade/audio/SFX_GameState_Alarm.wav" id="5_epg4t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
 atlas = ExtResource("1_7k104")
@@ -309,6 +311,19 @@ shape = SubResource("CircleShape2D_iifgy")
 shape = SubResource("CircleShape2D_qi2p4")
 target_position = Vector2(0, 0)
 collision_mask = 31
+
+[node name="ExclamationPoint" type="TextureRect" parent="." unique_id=98249403]
+offset_left = -21.0
+offset_top = -108.0
+offset_right = 19.0
+offset_bottom = -68.0
+texture = ExtResource("4_iifgy")
+
+[node name="DetectionSound" type="AudioStreamPlayer2D" parent="." unique_id=1498513180]
+stream = ExtResource("5_epg4t")
+volume_db = 2.391
+
+[node name="DetectionSoundCooldown" type="Timer" parent="DetectionSound" unique_id=457869853]
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

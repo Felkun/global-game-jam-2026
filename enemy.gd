@@ -7,15 +7,20 @@ extends CharacterBody2D
 @onready var anim_player = $AnimatedSprite2D
 @onready var detection_area = $DetectionArea
 @onready var shapecast = $ShapeCast2D
+@onready var exclamation_point = $ExclamationPoint
+@onready var detection_sound = $DetectionSound
+@onready var detection_sound_cooldown = $DetectionSound/DetectionSoundCooldown
 
 var player_in_range = null
 
 func _ready() -> void:
+	exclamation_point.visible = false
 	#the shapecast will ignore enemy body as collider
 	shapecast.add_exception(self)
 	shapecast.add_exception(detection_area)
 	shapecast.enabled = true
 	_set_idle_position()
+	detection_sound_cooldown.wait_time = 4.0
 
 func _physics_process(_delta):
 
@@ -37,7 +42,7 @@ func _physics_process(_delta):
 				print("Shape collided with: ", shapecast.get_collider(i).name)
 				if collider == player_in_range || collider.name == "DetectionHitbox":
 					print("GOTCHA CON SHAPECAST")
-					get_tree().call_deferred("reload_current_scene")
+					on_detection()
 		else:
 			var dist = shapecast.global_position.distance_to(player_in_range.global_position)
 			print("Non colpisco nulla. Distanza dal player: ", dist, " Lunghezza raggio: ", shapecast.target_position.length())
@@ -53,7 +58,14 @@ func _physics_process(_delta):
 
 	_update_animation(ghost_path.real_direction)
 
-
+func on_detection():
+	if detection_sound_cooldown.is_stopped():
+		detection_sound.play()
+		detection_sound_cooldown.start()
+	exclamation_point.visible = true
+	await get_tree().create_timer(0.7).timeout
+	get_tree().call_deferred("reload_current_scene")
+	
 
 func _update_animation(dir: Vector2):
 
