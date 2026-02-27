@@ -2,15 +2,15 @@ extends CharacterBody2D
 
 @export var waitTime = 10.0
 @onready var anim = $TutaBase
-@onready var timer = $Timer
-
-
+@onready var tie_timer = $TieTimer
+@onready var steps_audio = $StepsAudio
+@onready var steps_timer = $StepsAudio/StepsAudioTimer
 const SPEED = 450.0
 enum current_direction { NONE, UP, DOWN, LEFT, RIGHT }
 var dir = current_direction.NONE
 
 func _ready() -> void:
-	timer.wait_time = waitTime
+	tie_timer.wait_time = waitTime
 
 func player_movement(delta):
 
@@ -19,25 +19,38 @@ func player_movement(delta):
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = -SPEED
+		if steps_timer.is_stopped():
+			steps_audio.play()
+			steps_timer.start()
 	elif Input.is_action_pressed("move_down"):
 		dir = current_direction.DOWN
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = SPEED
+		if steps_timer.is_stopped():
+			steps_audio.play()
+			steps_timer.start()
 	elif Input.is_action_pressed("move_left"):
 		dir = current_direction.LEFT
 		play_anim(1)
 		velocity.x = -SPEED
 		velocity.y = 0
+		if steps_timer.is_stopped():
+			steps_audio.play()
+			steps_timer.start()
 	elif Input.is_action_pressed("move_right"):
 		dir = current_direction.RIGHT
 		play_anim(1)
 		velocity.x = SPEED
 		velocity.y = 0
+		if steps_timer.is_stopped():
+			steps_audio.play()
+			steps_timer.start()
 	else:
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
+		steps_timer.stop()
 	
 	move_and_slide()
 	
@@ -79,7 +92,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	$TutaBase.visible = false
 	$TutaMeccanico.visible = true
 	anim = $TutaMeccanico
-	timer.start()
+	tie_timer.start()
 
 func _physics_process(delta):
 	player_movement(delta)
@@ -92,7 +105,7 @@ func _on_area_militare_body_entered(body):
 	$TutaColtivatore.visible = false
 	$TutaMilitare.visible = true
 	anim = $TutaMilitare
-	timer.start()
+	tie_timer.start()
 
 
 func _on_area_coltivatore_body_entered(body):
@@ -101,7 +114,7 @@ func _on_area_coltivatore_body_entered(body):
 	$TutaMilitare.visible = false
 	$TutaColtivatore.visible = true
 	anim = $TutaColtivatore
-	timer.start()
+	tie_timer.start()
 
 
 func _on_timer_timeout() -> void:
