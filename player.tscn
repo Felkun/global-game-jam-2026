@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://o11p2tlwn1ro" path="res://asset/the-musquerade/images/meccanico-Sheet.png" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://budinngps6fad" path="res://asset/the-musquerade/images/militare-Sheet.png" id="4_sweqy"]
 [ext_resource type="Texture2D" uid="uid://dfkl380rsprpi" path="res://asset/the-musquerade/images/coltivatore-Sheet.png" id="5_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://drsv108kdir3g" path="res://asset/the-musquerade/audio/SFX_Player_FS_Metal_01.wav" id="6_b26j0"]
+[ext_resource type="AudioStream" uid="uid://dv3a25bfesu4n" path="res://asset/the-musquerade/audio/SFX_Player_FS_Metal_02.wav" id="7_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://cixo85jnqgrm4" path="res://asset/the-musquerade/audio/SFX_Player_FS_Metal_03.wav" id="8_nvl01"]
+[ext_resource type="AudioStream" uid="uid://bharv8ucynuql" path="res://asset/the-musquerade/audio/SFX_Player_FS_Metal_04.wav" id="9_ivps1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_onrkg")
@@ -1069,6 +1073,16 @@ height = 52.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqy"]
 size = Vector2(80, 100)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_urp6f"]
+playback_mode = 1
+random_pitch = 1.2258933
+random_volume_offset_db = 1.8
+streams_count = 4
+stream_0/stream = ExtResource("6_b26j0")
+stream_1/stream = ExtResource("7_n7ghd")
+stream_2/stream = ExtResource("8_nvl01")
+stream_3/stream = ExtResource("9_ivps1")
+
 [node name="Player" type="CharacterBody2D" unique_id=1216278766]
 script = ExtResource("1_onrkg")
 
@@ -1104,7 +1118,15 @@ collision_mask = 4
 position = Vector2(1, 12)
 shape = SubResource("RectangleShape2D_sweqy")
 
-[node name="Timer" type="Timer" parent="." unique_id=1648687800]
+[node name="TieTimer" type="Timer" parent="." unique_id=1648687800]
 wait_time = 3.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="StepsAudio" type="AudioStreamPlayer2D" parent="." unique_id=1534548171]
+stream = SubResource("AudioStreamRandomizer_urp6f")
+volume_db = -17.816
+
+[node name="StepsAudioTimer" type="Timer" parent="StepsAudio" unique_id=635702192]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="TieTimer" to="." method="_on_timer_timeout"]
